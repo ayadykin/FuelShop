@@ -29,8 +29,7 @@ public class CatalogController {
 
 	private CatalogService catalogService;
 
-	@GetMapping(path = "/gas-station", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
-			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@GetMapping(path = "/gas-station", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public List<OrderDto> getUserOrders() {
 		log.info("->getUserOrders");
 		return null;

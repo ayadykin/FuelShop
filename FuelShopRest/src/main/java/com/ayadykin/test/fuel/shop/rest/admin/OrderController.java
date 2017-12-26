@@ -28,15 +28,13 @@ public class OrderController {
 
 	private OrderService orderService;
 
-	@GetMapping(path = "/orders", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
-			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@GetMapping(path = "/orders", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public List<OrderDto> getAllOrders() {
 		log.info("->getUserOrders");
 		return orderService.getAllOrders();
 	}
 
-	@GetMapping(path = "/order/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
-			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@GetMapping(path = "/order/{id}", produces = { MediaType.APPLICATION_JSON_VALUE} )
 	public List<OrderDto> getOrder() {
 		log.info("->getUserOrders");
 		return orderService.getOrdersForUser();

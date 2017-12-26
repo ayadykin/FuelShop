@@ -39,8 +39,7 @@ public class ShopController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping(path = "/catalog", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
-			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@GetMapping(path = "/catalog", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public List<GasStationDto> getGasStationsCatalog() {
 		log.info("->getGasStationsList");
 		List<GasStationDto> gasStations = catalogService.getGasStationsList();
@@ -48,8 +47,7 @@ public class ShopController {
 		return gasStations;
 	}
 
-	@GetMapping(path = "/order", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
-			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@GetMapping(path = "/order", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public List<OrderDto> getUserOrders() {
 		log.info("->getUserOrders");
 		return orderService.getOrdersForUser();
@@ -66,12 +64,12 @@ public class ShopController {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<?> updateOrder(@RequestBody UpdateOrderDto updateOrderDto) {
 		log.info("->updateOrder, updateOrderDto: {}", updateOrderDto);
-		
+
 		OrderDto orderDto = orderService.getOrder(updateOrderDto.getId());
 		if (!orderDto.getUserId().equals(userService.getUserId())) {
 			// TODO
 		}
-		
+
 		if (orderService.updateOrder(updateOrderDto)) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else {
@@ -82,7 +80,7 @@ public class ShopController {
 
 	@DeleteMapping(path = "/order/{orderId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<?> deleteOrder(@PathVariable ("orderId") String  order) {
+	public ResponseEntity<?> deleteOrder(@PathVariable("orderId") String order) {
 		log.info("->createOrder, order: {}", order);
 		long orderId = Long.parseLong(order);
 		OrderDto orderDto = orderService.getOrder(orderId);
